@@ -26,7 +26,6 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   position: relative; /* Added for positioning */
   }
 
   .profile-image {
@@ -67,10 +66,11 @@
 
   /* Phone frame styles */
   .phone-frame {
-    position: absolute;
+    display: none;
+    position: fixed;
     top: 50%;
-    right: -330px; /* Adjust this value for positioning */
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #000;
     border: 20px solid #ccc;
     border-radius: 20px;
@@ -78,7 +78,6 @@
     height: 600px;
     overflow: hidden;
     z-index: 1000;
-    display: none;
   }
 
   .phone-screen {
@@ -88,15 +87,17 @@
   }
 
   .phone-frame.active {
-    animation: slideIn 0.5s ease forwards;
+    animation: fadeIn 0.5s ease forwards;
   }
 
-  @keyframes slideIn {
+  @keyframes fadeIn {
     0% {
-      right: -330px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
     }
     100% {
-      right: 20px;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
   }
  </style>
